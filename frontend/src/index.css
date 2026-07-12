@@ -1,0 +1,126 @@
+body {
+  max-width:100%;
+  overflow-x: hidden;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+    /* NavBar */
+
+.nav-link{
+  margin-right:50px;
+}
+
+.bars{
+  margin-top:13px
+}
+
+.navbar-nav{
+  margin-left:400px;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+    /* Footer */
+
+.footer-container{
+  background-color: rgb(240, 232, 240);
+}    
+
+.footer-row{
+  margin-top:50px;
+}
+
+.footer1{
+  margin-left:55px;
+}
+.footer1 i{
+  font-size:20px;
+  color:rgb(88, 86, 86);
+}
+
+.footer1 i:hover{
+  color:rgb(184, 84, 184);
+}
+
+
+
+.footer2{
+  margin-left: 40px;
+}
+
+.footer2345 a {
+  font-size:14px;
+  display:block;  
+  text-decoration: none;
+  color:grey;
+  margin-top:20px;
+
+}
+
+.footer2345 a:hover{
+  color:rgb(69, 147, 236);
+}
+.footer2345 h5{
+  color:rgb(63, 61, 61);
+}
+
+.footerpara{
+  margin-top:40px;
+}
+
+.footerpara p{
+  color:grey;
+  font-size:12px;
+  margin-right:50px;  
+  margin-left:50px;
+
+}
+
+
+/* Support component */
+
+#supportHero{
+  background-color:#397DD0;
+  color:white;
+}
+
+#supportWrapper{
+  display:flex;
+  justify-content:space-between;
+  margin: 0 150px;
+
+}
+
+#supportWrapper a {
+  color:white;
+}
+
+
+#supportLeft a{
+  color:white;
+  margin-left: 20px;
+}
+#supportLeft input{
+  padding:20px 200px;
+  border-radius:6px;
+  border:none;
+  margin-bottom:20px;
+  margin-top:20px;
+}
+#supportRight a{
+  color:white;
+}
