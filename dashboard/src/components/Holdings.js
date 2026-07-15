@@ -15,7 +15,7 @@ const Holdings = () => {
    const [allHoldings, setAllHoldings] = useState([]);
 
    useEffect(()=>{
-    axios.get("http://localhost:3004/allHoldings").then((res)=>{
+    axios.get("https://trade2daybackend.onrender.com").then((res)=>{
       console.log(res.data);
       setAllHoldings(res.data);
     });
