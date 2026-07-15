@@ -25,6 +25,7 @@ const Menu = () => {
 
     <div className="menu-container">
       <img src="logo.png" style={{ width: "50px" }} />
+      <h1> <Link style={{ textDecoration: "none" ,marginRight:"300px",color:"#2d92e0"}} to="http://localhost:3000/">  ZERODHA </Link> </h1>
       <div className="menus">
         <ul>
           <li>

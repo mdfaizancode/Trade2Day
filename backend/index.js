@@ -16,8 +16,17 @@ const app = express();
 const PORT = process.env.PORT || 3004;
 const URL = process.env.DBURL;
 
+app.use(cors({
+  origin: [
+    "http://localhost:3000",                          // local testing ke liye
+    "https://trade2day-frontend.vercel.app",           // tumhara actual frontend URL
+    "https://trade2day-dashboard.vercel.app"           // tumhara actual dashboard URL
+  ],
+  credentials: true
+}));
 
-app.use(cors());
+
+// app.use(cors());
 app.use(bodyParser.json());
 
 // app.get("/getHoldings", async(req, res)=>{
