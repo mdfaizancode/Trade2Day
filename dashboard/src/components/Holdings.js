@@ -1,3 +1,115 @@
+// import React from "react";
+// import { useState, useEffect } from 'react';
+// import axios from "axios";
+
+// const Holdings = () => {
+  
+//   // State to store holdings data fetched from backend
+//   const [allHoldings, setAllHoldings] = useState([]);
+
+//   useEffect(() => {
+//     // Fetching holdings data from Render backend
+//     // Changed from localhost to live backend URL
+//     axios.get("https://trade2daybackend.onrender.com/allHoldings")
+//       .then((res) => {
+//         console.log("Holdings Data Received:", res.data); // For debugging
+//         setAllHoldings(res.data);
+//       })
+//       .catch((err) => {
+//         console.error("Error fetching holdings:", err.message);
+//       });
+//   }, []);
+
+//   return (
+//     <>
+//       {/* Main heading with dynamic count */}
+//       <h3 className="title">Holdings ({allHoldings.length})</h3>
+      
+//       <div className="order-table">
+//         <table>
+//           <thead>
+//             <tr>
+//               <th>Instrument</th>
+//               <th>Qty.</th>
+//               <th>Avg. cost</th>
+//               <th>LTP</th>
+//               <th>Cur. val</th>
+//               <th>P&L</th>
+//               <th>Net chg.</th>
+//               <th>Day chg.</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {/* Mapping over all holdings to create table rows */}
+//             {allHoldings.map((stock, index) => {
+              
+//               // Calculations for current value and P&L
+//               const curValue = stock.price * stock.qty;
+//               const pandl = curValue - (stock.avg * stock.qty);
+//               const plPercent = stock.avg 
+//                 ? ((stock.price - stock.avg) / stock.avg) * 100 
+//                 : 0;
+
+//               // Classes for profit/loss coloring
+//               const isProfit = pandl >= 0;
+//               const profClass = isProfit ? "profit" : "loss";
+//               const dayClass = stock.isLoss ? "loss" : "profit";
+
+//               return (
+//                 <tr key={index}>
+//                   <td>{stock.name}</td>
+//                   <td>{stock.qty}</td>
+//                   <td>{parseFloat(stock.avg).toFixed(2)}</td>
+//                   <td>{parseFloat(stock.price).toFixed(2)}</td>
+//                   <td>{curValue.toFixed(2)}</td>
+//                   <td className={profClass}>
+//                     {pandl.toFixed(2)} ({plPercent.toFixed(2)}%)
+//                   </td>
+//                   <td className={profClass}>{stock.net}</td>
+//                   <td className={dayClass}>{stock.day}</td>
+//                 </tr>
+//               );
+//             })}
+//           </tbody>
+//         </table>
+//       </div>
+
+//       {/* Bottom Summary Cards - Total Investment, Current Value, P&L */}
+//       <div className="row">
+//         <div className="col">
+//           <h5>29,875.<span>55</span></h5>
+//           <p>Total investment</p>
+//         </div>
+//         <div className="col">
+//           <h5>31,428.<span>95</span></h5>
+//           <p>Current value</p>
+//         </div>
+//         <div className="col">
+//           <h5>1,553.40 (+5.20%)</h5>
+//           <p>P&L</p>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Holdings;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React from "react";
 import {useState, useEffect } from 'react';
 import axios from "axios";
@@ -15,7 +127,7 @@ const Holdings = () => {
    const [allHoldings, setAllHoldings] = useState([]);
 
    useEffect(()=>{
-    axios.get("https://trade2daybackend.onrender.com").then((res)=>{
+    axios.get("https://trade2daybackend.onrender.com/allHoldings").then((res)=>{
       console.log(res.data);
       setAllHoldings(res.data);
     });
