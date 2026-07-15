@@ -19,7 +19,7 @@ const URL = process.env.DBURL;
 app.use(cors({
   origin: [
     "http://localhost:3000",                          // local testing ke liye
-    "https://trade2day-frontend.vercel.app",           // tumhara actual frontend URL
+    "https://trade2dayfron-theta.vercel.app",           // tumhara actual frontend URL
     "https://trade2day-dashboard.vercel.app"           // tumhara actual dashboard URL
   ],
   credentials: true
