@@ -14,7 +14,7 @@ function Navbar() {
                     <form class="d-flex" role="search">
                         <ul class="navbar-nav mb-2   mb-lg-0">
                             <li class="nav-item ">
-                                <Link class="nav-link " aria-current="page" to="http://localhost:3001/" style={{marginLeft:"20px", marginRight:"90px "}}> Dashboard </Link>
+                                <Link class="nav-link " aria-current="page" to="https://https://trade2daydashboard.vercel.app/" style={{marginLeft:"20px", marginRight:"90px "}}> Dashboard </Link>
                             </li>
                             <li class="nav-item">
                                 <Link class="nav-link " aria-current="page" to="/signup">SignUp </Link>
