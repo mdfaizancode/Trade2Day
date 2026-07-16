@@ -21,7 +21,7 @@ app.use(cors({
     "http://localhost:3000",   
     "http://localhost:3001",                       // local testing ke liye
     "https://trade2dayfron-theta.vercel.app",           // tumhara actual frontend URL
-    "https://trade2daydashboard.vercel.app/"           // tumhara actual dashboard URL
+    "https://trade2daydashboard.vercel.app"           // tumhara actual dashboard URL
   ],
   credentials: true
 }));
