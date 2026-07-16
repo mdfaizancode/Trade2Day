@@ -133,7 +133,7 @@ const Holdings = () => {
     });
    }, []);
 
-
+// "http://localhost:3004/allHoldings"
 
   return (
     <>
