@@ -263,6 +263,16 @@ code {
   width: 30px;
   height: 20px;
 }
+.menu-container img {
+  flex-shrink: 0;
+  min-width: 50px;
+  
+}
+
+.menu-container .tradelogo{
+  margin-top:10px;
+
+}
 
 .menus {
   display: flex;
@@ -270,7 +280,7 @@ code {
   justify-content: space-evenly;
 }
 
-.menus ul {
+/* .menus ul {
   list-style-type: none;
 }
 
@@ -278,6 +288,18 @@ code {
   display: inline-block;
   margin-right: 30px;
   text-decoration: none;
+} */
+.menus ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.menus ul li {
+  display: flex;
 }
 
 .menu {

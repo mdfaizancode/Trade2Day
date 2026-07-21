@@ -5,7 +5,7 @@ function Footer() {
         <div className="Container border-top mt-5  footer-container ">
             <div className="row footer-row">
                 <div className="col footer1">
-                    <img src="/media/image/logo.svg" style={{ width: "150px" }}></img><hr></hr>
+                    <img className="tradelogofrontend" src="/media/image/tradelogofinal.png" alt="websitelogo" style={{width:"50%" ,margin:"10px"}}></img><hr></hr>
                     <p className="text-muted fs-7" style={{ fontSize: "14px" }}>&copy; 2010 - 2026, Zerodha Broking Ltd.<br></br>All rights reserved.</p> <br></br>
                     <i class="fa-brands fa-x-twitter"></i> &nbsp;&nbsp;
                     <i class="fa-brands fa-facebook"></i>&nbsp;&nbsp;

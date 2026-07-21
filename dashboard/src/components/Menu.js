@@ -25,7 +25,12 @@ const Menu = () => {
 
     <div className="menu-container">
       <img src="logo.png" style={{ width: "50px" }} />
-      <h1> <Link style={{ textDecoration: "none" ,marginRight:"300px",color:"#2d92e0"}} to="https://trade2dayfron-theta.vercel.app">  ZERODHA </Link> </h1>
+     <span><Link style={{ textDecoration: "none" ,marginRight:"30px",color:"#2d92e0"}}
+      to="https://trade2dayfron-theta.vercel.app">  
+      <img className="tradelogo" style={{width:"20%"}} 
+      src="tradelogofinal.png"></img>
+      </Link></span>
+
       <div className="menus">
         <ul>
           <li>
