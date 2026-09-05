@@ -1,4 +1,4 @@
-import React from 'react'; // authentications  next 
+import React from 'react'; // authentications 
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
