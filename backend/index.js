@@ -11,6 +11,7 @@ const cors = require("cors");
 
 const {HoldingsModel} = require("./model/HoldingsModel");
 const {PositionsModel} = require("./model/PositionsModel");
+const AuthRouter = require("./routes/authRoute.js");
 
 const app = express();
 const PORT = process.env.PORT || 3004;
@@ -19,7 +20,8 @@ const URL = process.env.DBURL;
 app.use(cors({
   origin: [
     "http://localhost:3000",   
-    "http://localhost:3001",                       // local testing ke liye
+    "http://localhost:3001",  
+   "http://localhost:8080",                               // local testing ke liye
     "https://trade2dayfron-theta.vercel.app",           // tumhara actual frontend URL
     "https://trade2daydashboard.vercel.app"           // tumhara actual dashboard URL
   ],
@@ -29,6 +31,7 @@ app.use(cors({
 
 // app.use(cors());
 app.use(bodyParser.json());
+app.use("/auth" , AuthRouter);
 
 // app.get("/getHoldings", async(req, res)=>{
 //   let tempHoldings = [
