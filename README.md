@@ -10,3 +10,6 @@ There are the command for projects
 7. git command undo karna 
 8. git restore --staged .   ....... git add . kar diya to use undo karne ke leye 
 9.
+10.   git git push origim main .... undo file ke sath github per push kar do
+11.   agar galti se kuch kam ki chiz undo(delete) ho gyi jaz rever hui to log --oneline karo or
+12.    dekho us revert ka kya code hai fir us revert ko dubara revert kar do zisse delete hu va vapas aa zayega ok sir 
