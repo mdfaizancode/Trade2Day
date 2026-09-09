@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Logout from '../authentication/Logout';
 
-function Navbar() {
+function Navbar({isAuthenticated, setIsAuthenticated}) {
     return (
         <nav class="navbar navbar-expand-lg sticky-top  border " style={{backgroundColor:"white" , padding:"15px"}}>
             <div class="container-fluid">
@@ -14,7 +15,7 @@ function Navbar() {
                     <form class="d-flex" role="search">
                         <ul class="navbar-nav mb-2   mb-lg-0">
                             <li class="nav-item ">
-                                <Link class="nav-link " aria-current="page" to="https://trade2daydashboard.vercel.app" style={{marginLeft:"20px", marginRight:"90px "}}> Dashboard </Link>
+                                <Link    class="nav-link " aria-current="page" to="https://trade2daydashboard.vercel.app" style={{marginLeft:"20px", marginRight:"90px "}}> Dashboard </Link>
                             </li>
                             <li class="nav-item">
                                 <Link class="nav-link " aria-current="page" to="/signup">SignUp </Link>
@@ -31,9 +32,11 @@ function Navbar() {
                             <li class="nav-item">
                                 <Link class="nav-link " aria-current="page" to="support">Supprot</Link>
                             </li>
-                            <li>
-                                 <i class="fa-solid fa-bars bars" ></i>
-                            </li>
+                            {isAuthenticated && (
+                                <li>
+                                    <Logout setIsAuthenticated={setIsAuthenticated}/>
+                                </li>
+                            )}
                         </ul>
                        
                     </form>
