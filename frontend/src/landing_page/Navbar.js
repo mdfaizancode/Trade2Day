@@ -18,7 +18,7 @@ function Navbar({isAuthenticated, setIsAuthenticated}) {
                                 <Link    class="nav-link " aria-current="page" to="https://trade2daydashboard.vercel.app" style={{marginLeft:"20px", marginRight:"90px "}}> Dashboard </Link>
                             </li>
                             <li class="nav-item">
-                                <Link class="nav-link " aria-current="page" to="/signup">SignUp </Link>
+                                <Link class="nav-link " aria-current="page" to={isAuthenticated ? "/" : "/signup"}>SignUp </Link>
                             </li>
                             <li class="nav-item">
                                 <Link class="nav-link " aria-current="page" to="/about">About</Link>

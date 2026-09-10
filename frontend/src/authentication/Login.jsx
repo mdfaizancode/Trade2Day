@@ -115,7 +115,7 @@ function Login(){
                 />
             </div>
             <button className="auth-button">Login</button>
-            <span>Don't have an account? <Link to="/SignUp">SignUp</Link></span>
+            <span>Don't have an account? <Link to="/signup">SignUp</Link></span>
             
         </form>
 
