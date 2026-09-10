@@ -11,7 +11,7 @@ import Login from './authentication/Login';
 import {BrowserRouter , Routes , Route , Navigate}  from "react-router-dom";
 
 import HomePage from './landing_page/home/HomePage';
-// import SignUp from './landing_page/signup/SignUp';
+import SignUpPage from './authentication/SignUp';
 import About from './landing_page/about/About';
 import Product from './landing_page/product/Product';
 import Pricing from './landing_page/pricing/Pricing';
@@ -50,12 +50,10 @@ const App = ()=>{
   <Routes>
 
     <Route path="/login" element={<GoogleAuthWrapper/>}/>
-    {/* <Route path="/Signup" element={<SignUp/>}/>     */}
+    <Route path="/signup" element={<SignUpPage/>}/>
+    <Route path="/SignUp" element={<SignUpPage/>}/>
 
     <Route path="/" element={<HomePage/>}></Route>
-    <Route path="/signUp" element={<PrivateRoute isAuthenticated={isAuthenticated} element={<HomePage/>}/>}></Route>
-
-    {/* <Route path="/signUp" element={<SignUp/>}></Route> */}
     <Route path="/about" element={<About/>}></Route>
     <Route path="/product" element={<Product/>}></Route>
     <Route path="/pricing" element={<Pricing/>}></Route>

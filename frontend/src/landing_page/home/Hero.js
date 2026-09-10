@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Hero(){
     return(
@@ -7,7 +8,7 @@ function Hero(){
                 <img src="media/image/HomeHero.svg" alt="hero image" className="pb-3"></img>
                 <h1 className="pt-4">Invest in everything</h1>
                 <p>Online platform to invest in stocks, derivatives, mutual funds, ETFs, bonds, and more.</p>
-                <button className="btn btn-primary mb-5" style={{width:"20%" , margin:"auto"}}>SignUp Now </button>
+                <Link to="/signup" className="btn btn-primary mb-5" style={{width:"20%" , margin:"auto", display:"inline-block"}}>SignUp Now </Link>
             </div>
             
         </div>
