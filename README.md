@@ -1,3 +1,5 @@
+Deployed Link --->>> https://trade2dayfron-theta.vercel.app/
+
 There are the command for projects 
 1.   git checkout main .... main me aa jao 
 2.   git log --oneline ....... for check commits 
