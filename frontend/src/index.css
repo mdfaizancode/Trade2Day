@@ -9,6 +9,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -128,4 +133,139 @@ code {
 }
 #supportRight a{
   color:white;
+}
+
+@media (max-width: 767.98px) {
+  .navbar-nav {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+
+  .navbar .d-flex {
+    width: 100%;
+  }
+
+  .navbar .nav-link {
+    margin-right: 0;
+    padding: 10px 4px;
+  }
+
+  .tradelogofrontend {
+    width: 150px !important;
+    max-width: 55vw;
+    margin: 4px !important;
+  }
+
+  #supportWrapper {
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 24px 16px !important;
+  }
+
+  #supportWrapper h3 {
+    margin: 0;
+  }
+
+  #supportHero .row > .col-1 {
+    display: none;
+  }
+
+  #supportLeft,
+  #supportRight {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 16px !important;
+  }
+
+  #supportLeft input {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 16px;
+    box-sizing: border-box;
+  }
+
+  #supportLeft a {
+    display: inline-block;
+    margin: 8px 12px 0 0;
+  }
+
+  .footer1,
+  .footer2 {
+    margin-left: 0;
+  }
+
+  .footer-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    margin: 24px 0 0;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  .footer-row > .col {
+    width: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 12px;
+  }
+
+  .footer-row > .footer1,
+  .footer-row > .footerpara {
+    grid-column: 1 / -1;
+  }
+
+  .footer-row .footerpara {
+    min-width: 0;
+    margin-top: 16px;
+  }
+
+  .footerpara p {
+    margin-right: 0;
+    margin-left: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .about-hero-copy br,
+  .about-team-row br {
+    display: none;
+  }
+
+  .product-section > [class*="col-"] {
+    min-width: 0;
+  }
+
+  .product-section .product-links,
+  .product-section .product-store-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .product-section .product-links a,
+  .product-section .product-store-links a {
+    margin: 0 !important;
+  }
+
+  .product-universe > [class*="col-"] {
+    min-width: 0;
+  }
+
+  .product-universe > button {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #supportWrapper {
+    flex-wrap: wrap;
+  }
+
+  #supportLeft h3 {
+    font-size: 1.15rem !important;
+  }
 }

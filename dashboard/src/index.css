@@ -865,5 +865,183 @@ hr {
   background-color: rgb(212, 212, 212);
 }
 
+@media (max-width: 768px) {
+  .topbar-container {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .indices-container {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 54px;
+    padding: 8px 12px;
+    border-right: 0;
+    border-bottom: 1px solid rgb(224, 224, 224);
+  }
+
+  .nifty,
+  .sensex {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .menu-container {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    min-height: 62px;
+    padding: 8px 12px;
+    gap: 12px;
+  }
+
+  .menu-container > img {
+    display: none;
+  }
+
+  .menu-container .tradelogo {
+    width: 105px !important;
+    max-width: 28vw;
+    margin-top: 0;
+  }
+
+  .menus {
+    min-width: 0;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .menus ul {
+    max-width: 100%;
+    gap: 14px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .profile {
+    flex: 0 0 auto;
+    margin-left: 12px;
+  }
+
+  .dashboard-container {
+    height: auto;
+    min-height: 90vh;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .watchlist-container {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+  }
+
+  .content {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    overflow: visible;
+    padding: 22px 16px;
+  }
+
+  .order-table {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .order-table table {
+    min-width: 620px;
+  }
+
+  .row {
+    flex-wrap: wrap;
+    gap: 20px 12px;
+    margin-top: 24px;
+  }
+
+  .col {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .data {
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .data .first h3 {
+    font-size: 2rem;
+  }
+
+  .table {
+    padding: 18px 16px;
+  }
+
+  .funds {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .list li .actions {
+    display: flex;
+    position: static;
+    width: 100%;
+    height: auto;
+    padding-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-container {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .menus ul {
+    gap: 12px;
+  }
+
+  .menu {
+    font-size: 0.75rem;
+  }
+
+  .profile {
+    margin-left: 4px;
+  }
+
+  .profile .username {
+    display: none;
+  }
+
+  .search {
+    padding: 14px 12px;
+    padding-right: 72px;
+    font-size: 0.8rem;
+  }
+
+  .counts {
+    right: 10px;
+    font-size: 0.8rem;
+  }
+
+  .content {
+    padding: 18px 12px;
+  }
+
+  .title {
+    font-size: 1.15rem;
+  }
+
+  .imp {
+    font-size: 1.25rem;
+  }
+}
+
 
 
