@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React from "react";
 import {Tooltip, Grow} from "@mui/material";
 import {watchList} from "../data/data";
 import { BarChartOutlined, KeyboardArrowDown, KeyboardArrowUp, MoreHoriz } from "@mui/icons-material";
@@ -31,18 +31,8 @@ export default WatchList;
 
 
   const WatchListItem  = ({stock}) =>{
-    const [showWatchListItem, setShowWatchListItem] = useState(false);
-
-    const handleMouseEnter = (e)=>{
-      setShowWatchListItem(true);
-    }
-
-    const handleMouseLeave = (e)=>{
-      setShowWatchListItem(false);
-    };
-
     return(
-      <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+      <li>
         <div className="item">
           <p className={stock.down ? "down" : "up"}> {stock.name}</p>
           <div className="itemInfo">
@@ -55,7 +45,7 @@ export default WatchList;
             <span className="price"> {stock.price} </span>
           </div>
         </div>
-        {showWatchListItem && <WatchListActions ui={stock.name}/>}
+        <WatchListActions ui={stock.name}/>
       </li> 
     );
   };

@@ -8,9 +8,9 @@ function RightSection({ imageURL,
 }) {
     return (
     <div className='container '>
-        <di className="row mt-5 ">
+        <div className="row mt-5 product-section">
 
-            <div className='col-5 mt-5 mb-5 text-muted'>
+            <div className='col-12 col-md-5 mt-5 mb-5 text-muted'>
                 <h1 className="mt-2 fs-3 mt-5"> {productName}</h1>
                 <p>{productDescripton}</p>
                 <div className='mt-4 '>
@@ -18,13 +18,13 @@ function RightSection({ imageURL,
                 </div>
             </div>
 
-              <div className='col-2'></div>
+                            <div className='d-none d-md-block col-md-2'></div>
 
-              <div className='col-5  mb-5'>
-                <img style={{width:"130%"}} src={imageURL} />
+                            <div className='col-12 col-md-5 mb-5'>
+                                <img className="img-fluid" src={imageURL} alt={productName} />
             </div>
 
-        </di>
+                </div>
 
     </div>
     )
