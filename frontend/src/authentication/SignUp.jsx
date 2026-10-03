@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 import { handleError, handleSuccess } from "./validationError";
 import {authApiUrl} from "./api.js";
+import { dashboardUrl } from '../config';
 
 function SignUp(){
 
@@ -11,14 +12,12 @@ function SignUp(){
         email: "",
         password: "" 
     })
+    const [showPassword, setShowPassword] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
         const {name, value} = e.target;
-        console.log(name, value);
-
-        const copysignupInfo = { ...signupInfo };
-        copysignupInfo[name] = value; 
-        setSignupInfo(copysignupInfo);
+        setSignupInfo((current) => ({ ...current, [name]: value }));
     }
 
    const  handleSignup = async (e) =>{
@@ -28,6 +27,7 @@ function SignUp(){
         return handleError('Name , Email , Password is Required!'); 
     }
 
+    setIsSubmitting(true);
     try{
         const response = await fetch(`${authApiUrl}/SignUp`,{
             method:"POST",
@@ -37,61 +37,84 @@ function SignUp(){
             body: JSON.stringify(signupInfo)
         });
         const result = await response.json();
-        const {success , message, error, jwtToken, user } = result ; 
+        const {success , message, error, jwtToken, user } = result ;
         if(success){
-            handleSuccess(message);
+            if (!jwtToken || !user) {
+                handleError('The authentication server did not return a complete account session.');
+                return;
+            }
+            handleSuccess(message || 'Your account is ready.');
             localStorage.setItem('user-info', JSON.stringify({
                 ...user,
                 token: jwtToken
             }));
             setTimeout(()=>{
-                window.location.replace('https://trade2daydashboard.vercel.app');
+                window.location.replace(dashboardUrl);
             },1000)
 
         }else{
             const details = error?.details?.[0]?.message || message;
             handleError(details);
         }
-          console.log(result);
     }catch(error){
         handleError(error.message || 'Unable to connect to the authentication server');
+    }finally{
+        setIsSubmitting(false);
     }
   }
 
     return(
         <div className="auth-container">
-        <h1>SignUp</h1>
+        <div className="auth-heading">
+            <span className="auth-eyebrow">A better way to invest</span>
+            <h1>Create your account</h1>
+            <p>Get started with a few simple details.</p>
+        </div>
         <form onSubmit={handleSignup}>
-            <div>
-                <label htmlFor="name"> Name</label>
+            <div className="auth-field">
+                <label htmlFor="name">Full name</label>
                 <input
+                id="name"
                 onChange={handleChange}
                 type="text"
-                placeholder="Enter your name...."
+                placeholder="Enter your full name"
                 name="name"
                 autoFocus
+                autoComplete="name"
+                required
                 />
             </div>
-            <div>
-                <label htmlFor="email"> Email</label>
+            <div className="auth-field">
+                <label htmlFor="email">Email address</label>
                 <input
+                id="email"
                 onChange={handleChange}
                 type="email"
-                placeholder="Enter your email...."
+                placeholder="you@example.com"
                 name="email"
+                autoComplete="email"
+                required
                 />
             </div>
-            <div>
+            <div className="auth-field">
                 <label htmlFor="password">Password</label>
+                <div className="auth-password-wrap">
                 <input
+                id="password"
                 onChange={handleChange}
-                type="password"
-                placeholder="Enter your password...."
+                type={showPassword ? "text" : "password"}
+                placeholder="Create a password"
                 name="password"
+                autoComplete="new-password"
+                required
                 />
+                <button className="password-toggle" type="button" onClick={() => setShowPassword((visible) => !visible)} aria-label={showPassword ? "Hide password" : "Show password"}>
+                    <i className={`fa-regular ${showPassword ? "fa-eye-slash" : "fa-eye"}`} aria-hidden="true"></i>
+                </button>
+                </div>
             </div>
-            <button className="auth-button"> SignUp</button>
-            <span>Already have an account? <Link to="/login">Login</Link></span>
+            <button className="auth-button" type="submit" disabled={isSubmitting}>{isSubmitting ? "Creating account..." : "Create account"} <i className="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+            <span className="auth-switch">Already have an account? <Link to="/login">Sign in</Link></span>
         </form>
         <ToastContainer/>
         </div>

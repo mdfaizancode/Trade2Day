@@ -2,13 +2,12 @@ import React from 'react'; // authentications
 import ReactDOM from 'react-dom/client';
 import "./authentication/auth.css";
 import './index.css';
-import PageNotFound from './authentication/PageNotFound';
 import {GoogleOAuthProvider} from '@react-oauth/google';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import RefreshHandler from './authentication/RefreshHandler';
 import Login from './authentication/Login';
 
-import {BrowserRouter , Routes , Route , Navigate}  from "react-router-dom";
+import {BrowserRouter , Routes , Route}  from "react-router-dom";
 
 import HomePage from './landing_page/home/HomePage';
 import SignUpPage from './authentication/SignUp';
@@ -31,22 +30,27 @@ const GoogleAuthWrapper = () => (
   </GoogleOAuthProvider>
 )
 
-const PrivateRoute = ({isAuthenticated, element}) => (
-  isAuthenticated ? element : <Navigate to="/login" />
-)
-
-
-
 const App = ()=>{
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [theme, setTheme] = useState(() => localStorage.getItem('trade2day-theme') || 'light');
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('trade2day-theme', theme);
+  }, [theme]);
 
   return(
 
   <BrowserRouter>
   <RefreshHandler setIsAuthenticated={setIsAuthenticated}/>
   
-  <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>
+  <Navbar
+    isAuthenticated={isAuthenticated}
+    setIsAuthenticated={setIsAuthenticated}
+    theme={theme}
+    setTheme={setTheme}
+  />
   <Routes>
 
     <Route path="/login" element={<GoogleAuthWrapper/>}/>
@@ -57,12 +61,10 @@ const App = ()=>{
     <Route path="/about" element={<About/>}></Route>
     <Route path="/product" element={<Product/>}></Route>
     <Route path="/pricing" element={<Pricing/>}></Route>
-    <Route path="/support" element={<PrivateRoute isAuthenticated={isAuthenticated} element={<Support/>}/>}></Route>
-    <Route path="/*" element={<ErrorPage/>}></Route>
-     
     <Route path="/pricing/Brokerage/Power" element={<BrokeragePower/>}></Route>
     <Route path="/pricing/Brokerage/Pricing" element={<BrokeragePricing/>}></Route>
-    <Route path="*" element={<PageNotFound/>}/>
+    <Route path="/support" element={<Support/>}></Route>
+    <Route path="*" element={<ErrorPage/>}></Route>
   
   </Routes>
   <Footer/>

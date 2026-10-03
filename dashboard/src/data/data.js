@@ -191,3 +191,12 @@ export const positions = [
     isLoss: true,
   },
 ];
+
+export const sampleFunds = {
+  availableBalance: 4043.1,
+  openingBalance: 3736.4,
+  payIn: 4064,
+  usedMargin: 3757.3,
+  deliveryMargin: 0,
+  collateral: 0,
+};
