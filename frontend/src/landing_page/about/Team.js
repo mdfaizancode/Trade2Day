@@ -1,30 +1,53 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+const principles = [
+    {
+        icon: 'fa-compass',
+        title: 'Clarity first',
+        description: 'Make important information easy to find and understand, from market watchlists to portfolio summaries.',
+    },
+    {
+        icon: 'fa-shield-halved',
+        title: 'Trust through transparency',
+        description: 'Show what is sample data, make account actions explicit and never imply that a preview performed a transaction.',
+    },
+    {
+        icon: 'fa-mobile-screen',
+        title: 'Built for every screen',
+        description: 'Keep essential market and account tools straightforward to use on desktop, tablet and mobile.',
+    },
+];
 
 function Team() {
     return (
-        <div className="container mb-5 ">
-
-            <h1 className="fs-3 mt-5 text-center text-center text-muted mb-5">People</h1>
-
-            <div className="row about-team-row" style={{ lineHeight: "1.9rem" }}>
-                <div className="col-12 col-md-6 mt-5 text-muted text-center">
-                    <img src="media/image/aboutlogo.jpg"  style={{borderRadius:"100%" , width:"50%"}} alt="about logo"></img>
-                    <h4 className='mt-5'>Baskotigama</h4>
-                    <h6 className='mt-3'>Founder, CEO</h6>
-                </div>
-                <div className="col-12 col-md-6 mt-5 text-muted mb-5">
-                    <p>Nithin bootstrapped and founded Zerodha in 2010 to overcome<br/> the hurdles he faced during his decade long stint as a trader. Today, <br/>Zerodha has changed the landscape of the Indian broking industry. </p>
-
-                    <p>He is a member of the SEBI Secondary Market Advisory Committee<br/> (SMAC) and the Market Data Advisory Committee (MDAC)</p>
-
-                    <p>Playing basketball is his zen.</p>
-
-                    <p>Connect on <a href='#' style={{textDecoration:"none"}}>Homepage</a> / <a href='#' style={{textDecoration:"none"}}>TradingQnA</a> /  <a href='#'style={{textDecoration:"none"}}>Twitter </a> </p>
-                </div>
-
+        <section className="about-principles container">
+            <div className="about-section-heading">
+                <span className="hero-eyebrow">What guides us</span>
+                <h2>A thoughtful foundation for your investing journey.</h2>
             </div>
-        </div>
-    )
+            <div className="about-principle-grid">
+                {principles.map(({ icon, title, description }) => (
+                    <article className="about-principle-card" key={title}>
+                        <span className="about-principle-icon"><i className={`fa-solid ${icon}`} aria-hidden="true"></i></span>
+                        <h3>{title}</h3>
+                        <p>{description}</p>
+                    </article>
+                ))}
+            </div>
+            <div className="about-next-step">
+                <div>
+                    <h2>Take a look around.</h2>
+                    <p>Explore the platform, review transparent pricing or get help with common questions.</p>
+                </div>
+                <div className="about-next-links">
+                    <Link to="/product">Platform</Link>
+                    <Link to="/pricing">Pricing</Link>
+                    <Link to="/support">Help centre</Link>
+                </div>
+            </div>
+        </section>
+    );
 }
 
 export default Team;

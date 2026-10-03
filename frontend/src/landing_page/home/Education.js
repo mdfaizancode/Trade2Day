@@ -1,28 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Education(){
     return(
-        <div>
         <div className="container mb-5">
-            <div className="row">
+        <div className="row home-section education-section">
                 <div className="col-6">
-                    <img style={{width:"80%"}} src="/media/image/education.svg"></img>
+                    <img style={{width:"80%"}} src="/media/image/education.svg" alt="Learn investing at your own pace" />
                 </div>
 
                 <div className="col-6 ">
-                    <h1 className="fs-3">Free and open market education</h1>
+                    <h1 className="fs-3">Get familiar with Trade2Day.</h1>
                     <br></br>
-                    <p>Varsity, the largest online stock market education book in the world covering everything from the basics to advanced trading.</p>
+                    <p>Explore the dashboard tools and get to know the platform before deciding on your next step.</p>
                     
-                    <a href="#"   style={{textDecoration:"none"}}>Varsity <i class="fa-solid fa-arrow-right"></i> </a>
+                    <Link to="/product" style={{textDecoration:"none"}}>Explore the platform <i className="fa-solid fa-arrow-right"></i></Link>
                     <br></br><br></br><br></br>
 
                     
-                    <p>Varsity, the largest online stock market education book in the world covering everything from the basics to advanced trading.</p>
+                    <p>Find answers to common questions about account access, pricing and dashboard features.</p>
                     
-                    <a href="#"   style={{textDecoration:"none"}}>Trading Q&A <i class="fa-solid fa-arrow-right"></i> </a>
+                    <Link to="/support" style={{textDecoration:"none"}}>Get support <i className="fa-solid fa-arrow-right"></i></Link>
                 </div>
-            </div>
         </div>
         </div>
     )

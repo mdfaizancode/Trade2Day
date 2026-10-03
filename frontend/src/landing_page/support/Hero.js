@@ -1,46 +1,37 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-
-
-function Hero (){
-
-    return(
-      <>
-      
-      <section className='container-fluid' id="supportHero">
-        <div className=' mt-5 p-5' id="supportWrapper">
-          <h3>Support Portal </h3> 
-          <a href="#">Track Tickets</a>
-        </div>
-
-          <div className="row t-4">
-            <div className="col-1"></div>
-            <div className="col-5 mt-4  p-5 b-5" id="supportLeft">
-              <h3 className="fs-4">Search for an answer or browser <br/>for help topics</h3>
-              <input type="text" placeholder="eg: how do i activate F&O why is my order getting rejected" />
-              <br></br>
-              <a href="#" > track account opening</a>
-              <a href="#"> track segment activation </a>
-              <a href="#"> intraday</a> <br></br>
-              <a href="#"> margins</a>
-              <a href="#"> kite user manual </a>
+function Hero({ search, onSearchChange }) {
+    return (
+        <section className="support-hero">
+            <div className="support-hero-inner">
+                <span className="hero-eyebrow">Trade2Day help centre</span>
+                <h1>How can we help?</h1>
+                <p>Search common questions or browse help topics below.</p>
+                <label className="support-search">
+                    <i className="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <span className="visually-hidden">Search help topics</span>
+                    <input
+                        type="search"
+                        value={search}
+                        onChange={(event) => onSearchChange(event.target.value)}
+                        placeholder="Try “account”, “password” or “dashboard”"
+                    />
+                    {search && (
+                        <button type="button" onClick={() => onSearchChange('')} aria-label="Clear help search">
+                            <i className="fa-solid fa-xmark" aria-hidden="true"></i>
+                        </button>
+                    )}
+                </label>
+                <div className="support-quick-links">
+                    <span>Quick links</span>
+                    <Link to="/pricing">Pricing</Link>
+                    <Link to="/product">Platform</Link>
+                    <Link to="/login">Sign in</Link>
+                </div>
             </div>
-            <div className="col-1"></div>
-            <div className="col-5 mt-5 p-5 mb-5 " id="supportRight">
-              <h3>Featured</h3>
-              <ol>
-              <li><a href="#"> current takeover and delisting</a></li>
-              <li><a href="#"> latest intraday laverage - MIS</a></li>
-              </ol>
-
-            </div>
-          </div>
-
-
-      
-      </section>
-      </>
-    )
+        </section>
+    );
 }
 
 export default Hero;

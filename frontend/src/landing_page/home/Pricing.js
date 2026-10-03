@@ -1,32 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Pricing(){
     return(
-        <div className="container mb-5 ">
-        <div className="row mt-5">
+        <div className="container mb-5 home-section">
+        <div className="row mt-5 pricing-section">
          <div className="col-5 mb-5">
-           <h1 className="fs-3">Unbeatable pricing</h1>
-           <p>We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.</p>
-           <a href="#"  style={{textDecoration:"none"}}>See Pricing <i class="fa-solid fa-arrow-right"></i> </a>
+           <h1 className="fs-3 home-section-title">Understand your investment costs.</h1>
+           <p>Review applicable brokerage, statutory charges and taxes before placing an order. A verified Trade2Day fee schedule is not published in this preview.</p>
+           <Link to="/pricing" style={{textDecoration:"none"}}>Pricing overview <i className="fa-solid fa-arrow-right"></i></Link>
 
          </div>
 
-             <div className="col-7 mb-5">   
-                <i style={{color:"orange"}} class="fa-solid fa-indian-rupee-sign"></i>
-                <h1 style={{display:"inline-block" , fontSize:"80px", color:"orange" ,}}>0</h1> 
-                <p style={{display:"inline-block", fontSize:"10px" ,padding:"8px", }}>Free account openeing</p>
-
-                <i style={{color:"orange"}} class="fa-solid fa-indian-rupee-sign"></i>
-                <h1 style={{display:"inline-block" , fontSize:"80px", color:"orange"}}>0</h1>
-                 <p style={{display:"inline-block", fontSize:"10px", padding:"8px",}}>Free equity delevery<br></br> and direct mutual funds</p>
-
-
-                <i style={{color:"orange"}}  class="fa-solid fa-indian-rupee-sign"></i>
-                <h1 style={{display:"inline-block" , fontSize:"80px", color:"orange"}}>20</h1>
-                 <p style={{display:"inline-block ", fontSize:"10px" , padding:"8px", }}>Intraday and <br></br>F&O </p>
-
-
-
+             <div className="col-7 mb-5 pricing-cards">
+                <div className="pricing-card"><strong>Brokerage</strong><span>Check the current schedule</span></div>
+                <div className="pricing-card"><strong>Statutory</strong><span>Charges may apply</span></div>
+                <div className="pricing-card"><strong>Before you trade</strong><span>Confirm product availability</span></div>
              </div>
         </div>
         </div>

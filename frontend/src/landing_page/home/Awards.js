@@ -1,46 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Awards(){
-    return(
-        <div className="container mt-5 mb-5">
-            <div className="row">
-                <div className="col-5 mt-5">
-
-                    <h2 className="fs-2">Trust with confidence</h2>
-                     <br></br>
-                    <h4 > Customer-first always</h4>
-                    <p > That's why 1.6+ crore customers trust Zerodha <br></br>
-                        with ~ ₹6 lakh crores of equity investments, <br></br>
-                        making us India’s  largest broker; contributing<br></br>
-                     to 15% of daily retail exchange volumes in India.</p> 
-                    <br></br>
-
-                    
-                    <h4 > No spam or gimmicks</h4>
-                    <p> No gimmicks, spam, "gamification", or annoying push notifications. High quality apps that you use at your pace, the way you like. <a href="#"> Our philosophies.</a></p> 
-                    <br></br>
-                 
-                    <h4> The Zerodha universe</h4>
-                    <p> Not just an app, but a whole ecosystem. Our investments in 30+ fintech startups offer you tailored services specific to your needs.</p>
-                     <br></br>
-
-                    
-                    <h4> Do better with money</h4>
-                    <p>With initiatives like <a href="#"> Nudge </a> and <a href="#">Kill Switch</a> , we don't just facilitate transactions, but actively help you do better with your money.</p>
-                     <br></br>
-
+function Awards() {
+    return (
+        <section className="container home-section trust-section">
+            <div className="row align-items-center">
+                <div className="col-5 mt-4">
+                    <span className="hero-eyebrow">Made for your goals</span>
+                    <h2 className="home-section-title">Invest with confidence.</h2>
+                    <h4>Everything in one place</h4>
+                    <p>Explore watchlists, portfolio summaries and market tools through a platform designed to make your view feel more straightforward.</p>
+                    <h4>Clarity over clutter</h4>
+                    <p>Find the information you need without the noise. Make decisions at your pace with a simple, focused experience.</p>
+                    <h4>Built around your journey</h4>
+                    <p>Whether you're learning the basics or refining your approach, find helpful tools to support every next step.</p>
+                    <Link to="/product" className="trust-link">Explore the platform <i className="fa-solid fa-arrow-right" aria-hidden="true"></i></Link>
                 </div>
-
-                <div className="col-7 p-5 mt-5">  
-                   <img className="mb-4" src="media\image\ecosystem.png" alt="Ecosystem" style={{width:"100%"}}></img>
-                 <h6   ><a href="#"  className="m-5" style={{textDecoration:"none"}}>Explore Our Products <i class="fa-solid fa-arrow-right"></i> </a><a href="#"  className="m-5 "style={{textDecoration:"none"}}>Try Kite Demo <i class="fa-solid fa-arrow-right"></i></a></h6>
+                <div className="col-7 p-5 mt-4 trust-visual">
+                    <img className="mb-4" src="/media/image/ecosystem.png" alt="Trade2Day investing platform ecosystem" />
+                    <div className="trust-action">
+                        <span>One thoughtful experience for your investments.</span>
+                        <Link to="/signup" aria-label="Open your Trade2Day account"><i className="fa-solid fa-arrow-right" aria-hidden="true"></i></Link>
+                    </div>
                 </div>
-
-                
             </div>
-        
-        </div>
-    )
+        </section>
+    );
 }
 
 export default Awards;

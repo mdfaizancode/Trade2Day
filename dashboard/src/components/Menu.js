@@ -1,73 +1,120 @@
-import React from "react";
-import { useState } from "react";
-import {Link} from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  AccountBalanceWalletOutlined,
+  AppsOutlined,
+  DashboardOutlined,
+  ExpandMore,
+  LightModeOutlined,
+  NightsStayOutlined,
+  ReceiptLongOutlined,
+  ShowChartOutlined,
+} from "@mui/icons-material";
 
+const navigation = [
+  { label: "Overview", path: "/", Icon: DashboardOutlined },
+  { label: "Orders", path: "/orders", Icon: ReceiptLongOutlined },
+  { label: "Holdings", path: "/holdings", Icon: AccountBalanceWalletOutlined },
+  { label: "Positions", path: "/positions", Icon: ShowChartOutlined },
+  { label: "Funds", path: "/funds", Icon: AccountBalanceWalletOutlined },
+  { label: "Apps", path: "/apps", Icon: AppsOutlined },
+];
 
-const Menu = () => {
-
-  const [selectedMenu, setSelectedMenu] = useState(0);
+const Menu = ({ theme, setTheme }) => {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const profileRef = useRef(null);
+  const location = useLocation();
+  let user = {};
 
-  const handleMenuClick = (index) => {
-    setSelectedMenu(index);
-  };
+  try {
+    user = JSON.parse(localStorage.getItem("user-info") || "{}");
+  } catch (error) {
+    console.error("Unable to read saved account information:", error);
+  }
 
+  const displayName = user.name || "Investor";
+  const initials = displayName
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0].toUpperCase())
+    .join("");
 
-  const handleProfileClick = (index) => {
-    setIsProfileDropdownOpen(!isProfileDropdownOpen);
-  };
+  useEffect(() => {
+    if (!isProfileDropdownOpen) return undefined;
 
-  const menuClass = "menu";
-  const activeMenuClass = "menu selected";
+    const closeOnOutsideClick = (event) => {
+      if (!profileRef.current?.contains(event.target)) {
+        setIsProfileDropdownOpen(false);
+      }
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setIsProfileDropdownOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [isProfileDropdownOpen]);
 
   return (
-
-
     <div className="menu-container">
-      <img src="logo.png" style={{ width: "50px" }} />
-     <span><Link style={{ textDecoration: "none" ,marginRight:"30px",color:"#2d92e0"}}
-      to="https://trade2dayfron-theta.vercel.app">  
-      <img className="tradelogo" style={{width:"20%"}} 
-      src="tradelogofinal.png"></img>
-      </Link></span>
+      <Link className="dashboard-brand" to="/" aria-label="Trade2Day dashboard home">
+        <span className="brand-mark">T</span>
+        <span>Trade<span className="brand-accent">2</span>Day</span>
+      </Link>
 
-      <div className="menus">
-        <ul>
-          <li>
-            <Link style={{ textDecoration: "none" }} to="/" onClick={() => handleMenuClick(0)}   >
-              <p className={selectedMenu === 0 ? activeMenuClass : menuClass}>Dashboard</p>
+      <nav className="menus" aria-label="Dashboard navigation">
+        {navigation.map(({ label, path, Icon }) => {
+          const isActive = location.pathname === path;
+          return (
+            <Link
+              key={path}
+              className={`menu-link${isActive ? " selected" : ""}`}
+              to={path}
+              aria-current={isActive ? "page" : undefined}
+            >
+              <Icon aria-hidden="true" />
+              <span>{label}</span>
             </Link>
-          </li>
-          <li>
-            {/* <Link style={{ textDecoration: "none" }} to="/orders" onClick={() => handleMenuClick(1)}   >
-              <p className={selectedMenu === 1 ? activeMenuClass : menuClass}>Orders</p>
-            </Link> */}
-          </li>
-          <li>
-            <Link style={{ textDecoration: "none" }} to="/holdings" onClick={() => handleMenuClick(2)}   >
-              <p className={selectedMenu === 2 ? activeMenuClass : menuClass}>Holdings</p>
-            </Link>
-          </li>
-          <li>
-            <Link style={{ textDecoration: "none" }} to="/positions" onClick={() => handleMenuClick(3)}   >
-              <p className={selectedMenu === 3 ? activeMenuClass : menuClass}>Positions</p>
-            </Link>
-          </li>
-          <li>
-            <Link style={{ textDecoration: "none" }} to="/funds" onClick={() => handleMenuClick(4)}   >
-              <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>Funds</p>
-            </Link>
-          </li>
-          <li>
-            {/* <Link style={{ textDecoration: "none" }} to="/" onClick={() => handleMenuClick(5)}   >
-              <p className={selectedMenu === 5 ? activeMenuClass : menuClass}>Apps</p>
-            </Link> */}
-          </li>
-        </ul>
-        <hr />
-        <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+          );
+        })}
+      </nav>
+
+      <div className="menu-actions">
+        <button
+          className="dashboard-theme-toggle"
+          type="button"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        >
+          {theme === "dark" ? <LightModeOutlined /> : <NightsStayOutlined />}
+        </button>
+        <div className="profile-wrap" ref={profileRef}>
+          <button
+            className="profile"
+            type="button"
+            onClick={() => setIsProfileDropdownOpen((open) => !open)}
+            aria-expanded={isProfileDropdownOpen}
+            aria-haspopup="true"
+          >
+            <span className="avatar">{initials || "I"}</span>
+            <span className="profile-name">{displayName}</span>
+            <ExpandMore className="profile-chevron" />
+          </button>
+          {isProfileDropdownOpen && (
+            <div className="profile-dropdown">
+              <strong>{displayName}</strong>
+              <span>{user.email || "Your Trade2Day account"}</span>
+              <Link to="/funds" onClick={() => setIsProfileDropdownOpen(false)}>
+                Account funds
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

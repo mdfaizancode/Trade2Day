@@ -1,87 +1,70 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { AccountBalanceOutlined, InfoOutlined } from "@mui/icons-material";
+import { sampleFunds } from "../data/data";
 
 const Funds = () => {
+  const [transferNotice, setTransferNotice] = useState("");
+
   return (
-    <>
-      <div className="funds">
-        <p>Instant, zero-cost fund transfers with UPI </p>
-        <Link className="btn btn-green">Add funds</Link>
-        <Link className="btn btn-blue">Withdraw</Link>
-      </div>
-
-      <div className="row">
-        <div className="col">
-          <span>
-            <p>Equity</p>
-          </span>
-
-          <div className="table">
-            <div className="data">
-              <p>Available margin</p>
-              <p className="imp colored">4,043.10</p>
-            </div>
-            <div className="data">
-              <p>Used margin</p>
-              <p className="imp">3,757.30</p>
-            </div>
-            <div className="data">
-              <p>Available cash</p>
-              <p className="imp">4,043.10</p>
-            </div>
-            <hr />
-            <div className="data">
-              <p>Opening Balance</p>
-              <p>4,043.10</p>
-            </div>
-            <div className="data">
-              <p>Opening Balance</p>
-              <p>3736.40</p>
-            </div>
-            <div className="data">
-              <p>Payin</p>
-              <p>4064.00</p>
-            </div>
-            <div className="data">
-              <p>SPAN</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Delivery margin</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Exposure</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Options premium</p>
-              <p>0.00</p>
-            </div>
-            <hr />
-            <div className="data">
-              <p>Collateral (Liquid funds)</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Collateral (Equity)</p>
-              <p>0.00</p>
-            </div>
-            <div className="data">
-              <p>Total Collateral</p>
-              <p>0.00</p>
-            </div>
-          </div>
+    <div className="portfolio-page">
+      <div className="page-heading">
+        <div>
+          <span className="eyebrow">Account</span>
+          <h1>Funds</h1>
+          <p>Review your available balance and margin details.</p>
         </div>
-
-        <div className="col">
-          <div className="commodity">
-            <p>You don't have a commodity account</p>
-            <Link className="btn btn-blue">Open Account</Link>
-          </div>
+        <div className="funds-toolbar">
+          <p>UPI transfers are not connected in this preview.</p>
+          <button
+            className="button-primary"
+            type="button"
+            onClick={() => setTransferNotice("Fund transfers are not enabled in this dashboard preview. No transaction was created.")}
+          >
+            Add funds
+          </button>
+          <button
+            className="button-secondary"
+            type="button"
+            onClick={() => setTransferNotice("Withdrawals are not enabled in this dashboard preview. No transaction was created.")}
+          >
+            Withdraw
+          </button>
         </div>
       </div>
-    </>
+
+      {transferNotice && (
+        <div className="notice-banner" role="status">
+          <InfoOutlined aria-hidden="true" />
+          <span>{transferNotice}</span>
+          <button type="button" onClick={() => setTransferNotice("")} aria-label="Dismiss message">×</button>
+        </div>
+      )}
+
+      <div className="funds-grid">
+        <section className="funds-panel">
+          <span className="eyebrow">Equity</span>
+          <h2>Available balance</h2>
+          <div className="funds-highlight">
+            <span>Available margin</span>
+            <strong>{`₹${sampleFunds.availableBalance.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}</strong>
+            <small>Sample account value</small>
+          </div>
+          <div className="funds-row"><span>Opening balance</span><strong>{`₹${sampleFunds.openingBalance.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}</strong></div>
+          <div className="funds-row"><span>Pay-in</span><strong>{`₹${sampleFunds.payIn.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}</strong></div>
+          <div className="funds-row"><span>Used margin</span><strong>{`₹${sampleFunds.usedMargin.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}</strong></div>
+          <div className="funds-row"><span>Delivery margin</span><strong>{`₹${sampleFunds.deliveryMargin.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}</strong></div>
+          <div className="funds-row"><span>Collateral</span><strong>{`₹${sampleFunds.collateral.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`}</strong></div>
+          <p className="funds-note">Balances shown are sample values and are not connected to a live account.</p>
+        </section>
+
+        <section className="commodity-panel">
+          <span className="app-card-icon"><AccountBalanceOutlined /></span>
+          <span className="eyebrow">More ways to invest</span>
+          <h2>Commodity account</h2>
+          <p>Commodity trading isn’t connected in this preview. Account setup can be completed through your broker.</p>
+        </section>
+      </div>
+    </div>
   );
 };
 
