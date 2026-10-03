@@ -2,6 +2,7 @@ import { useState } from "react";
 import {Link} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 import { handleError, handleSuccess } from "./validationError";
+import {authApiUrl} from "./api.js";
 
 function SignUp(){
 
@@ -28,11 +29,10 @@ function SignUp(){
     }
 
     try{
-        const url = "http://localhost:8080/auth/SignUp";
-        const response = await fetch(url,{
+        const response = await fetch(`${authApiUrl}/SignUp`,{
             method:"POST",
             headers:{
-                'Content-type': 'application/json   '
+                'Content-type': 'application/json'
             },
             body: JSON.stringify(signupInfo)
         });
@@ -54,7 +54,7 @@ function SignUp(){
         }
           console.log(result);
     }catch(error){
-        handleError(error);
+        handleError(error.message || 'Unable to connect to the authentication server');
     }
   }
 

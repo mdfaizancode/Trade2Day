@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 import { handleError, handleSuccess } from "./validationError";
 import {useGoogleLogin} from '@react-oauth/google';
-import {googleAuth} from "./api.js";
+import {authApiUrl, googleAuth} from "./api.js";
 
 function Login(){
 
@@ -29,11 +29,10 @@ function Login(){
     }
 
     try{
-        const url = "http://localhost:8080/auth/login";
-        const response = await fetch(url,{
+        const response = await fetch(`${authApiUrl}/login`,{
             method:"POST",
             headers:{
-                'Content-type': 'application/json   '
+                'Content-type': 'application/json'
             },
             body: JSON.stringify(loginInfo)
         });
@@ -51,7 +50,7 @@ function Login(){
             },1000)
 
         }else if(error){
-            const details = error?.details[0].message;
+            const details = error?.details?.[0]?.message;
             handleError(details);
             
         }else if(!success){
@@ -59,7 +58,7 @@ function Login(){
         }
           console.log(result);
     }catch(error){
-        handleError(error);
+        handleError(error.message || 'Unable to connect to the authentication server');
     }
   }
 
