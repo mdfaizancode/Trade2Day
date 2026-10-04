@@ -62,10 +62,16 @@ const Menu = ({ theme, setTheme }) => {
 
   return (
     <div className="menu-container">
-      <Link className="dashboard-brand" to="/" aria-label="Trade2Day dashboard home">
+      <a
+         className="dashboard-brand"
+         href="https://trade2dayfron-theta.vercel.app"
+         aria-label="Trade2Day dashboard home"
+       >
         <span className="brand-mark">T</span>
-        <span>Trade<span className="brand-accent">2</span>Day</span>
-      </Link>
+        <span>
+        Trade<span className="brand-accent">2</span>Day
+        </span>
+     </a>
 
       <nav className="menus" aria-label="Dashboard navigation">
         {navigation.map(({ label, path, Icon }) => {
